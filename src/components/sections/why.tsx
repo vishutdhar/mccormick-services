@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, User, ShieldCheck, Clock } from "lucide-react";
+import { MapPin, User, BadgeCheck, Clock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type ValueProp = {
@@ -20,11 +20,9 @@ const VALUES: ValueProp[] = [
     body: "You talk to Mike directly — no call centers, no runaround.",
   },
   {
-    icon: ShieldCheck,
-    title: "Insured",
-    // TODO: confirm insurance/licensing status with Mike before publishing.
-    // Copy kept generic so it can be removed cleanly if it turns out untrue.
-    body: "Licensed and insured.",
+    icon: BadgeCheck,
+    title: "Free quotes",
+    body: "No-obligation estimates — know the cost before any work begins.",
   },
   {
     icon: Clock,
