@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * Recent work gallery — real photos in a tasteful asymmetric grid (NOT a
+ * Services gallery — illustrative photos in a tasteful asymmetric grid (NOT a
  * slider). The portrait power-washing shot becomes a tall tile spanning two
  * rows on the left; the three landscape shots fill the right. Captions live
  * in a forest gradient overlay on each tile, hero-style, so they stay legible
@@ -41,7 +41,7 @@ const SHOTS: Shot[] = [
   {
     src: "/work/curb-appeal.jpg",
     alt: "Clean white house with a freshly manicured front lawn",
-    caption: "Exterior refresh — Macomb County",
+    caption: "Exterior refresh",
     span: "sm:col-span-2 lg:col-span-2",
   },
 ];
@@ -50,18 +50,18 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-brand-cream bg-dot-grid py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-2xl">
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
-              See it for yourself
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
-              Recent work
-            </h2>
-          </div>
-          {/* Low-key honesty note — sample photos until Mike's real ones land. */}
-          <p className="text-sm italic text-brand-ink/55">
-            Sample photos — real job photos coming soon.
+        <div className="max-w-2xl">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
+            Services in action
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
+            The work, up close
+          </h2>
+          {/* Visible, consistent disclosure (same on all breakpoints): these
+              are sample/illustrative photos until Mike's real job photos
+              replace the placeholders in /public/work. */}
+          <p className="mt-3 text-sm italic text-brand-ink/60">
+            Sample photos for now — real job photos coming soon.
           </p>
         </div>
 
