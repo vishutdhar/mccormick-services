@@ -57,6 +57,12 @@ export function Gallery() {
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
             The work, up close
           </h2>
+          {/* Visible, consistent disclosure (same on all breakpoints): these
+              are sample/illustrative photos until Mike's real job photos
+              replace the placeholders in /public/work. */}
+          <p className="mt-3 text-sm italic text-brand-ink/60">
+            Sample photos for now — real job photos coming soon.
+          </p>
         </div>
 
         <ul className="mt-10 grid auto-rows-[15rem] grid-cols-1 gap-4 sm:auto-rows-[16rem] sm:grid-cols-2 lg:grid-cols-3">
