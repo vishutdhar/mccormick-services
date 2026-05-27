@@ -17,9 +17,7 @@ export function Footer() {
 
   return (
     <footer className="bg-brand-forest bg-forest-weave text-brand-cream">
-      {/* Extra bottom padding on mobile clears the fixed call bar (~4.5rem +
-          safe-area) so the copyright strip is never hidden; reverts at sm+. */}
-      <div className="mx-auto max-w-6xl px-6 pt-16 pb-[calc(5.5rem+env(safe-area-inset-bottom))] sm:px-8 sm:pb-16">
+      <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* 1: brand */}
           <div>
