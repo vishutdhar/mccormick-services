@@ -41,7 +41,7 @@ const SHOTS: Shot[] = [
   {
     src: "/work/curb-appeal.jpg",
     alt: "Clean white house with a freshly manicured front lawn",
-    caption: "Exterior refresh — Macomb County",
+    caption: "Exterior refresh",
     span: "sm:col-span-2 lg:col-span-2",
   },
 ];
@@ -52,10 +52,10 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="max-w-2xl">
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
-            See it for yourself
+            Services in action
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
-            Recent work
+            The work, up close
           </h2>
         </div>
 
