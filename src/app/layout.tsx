@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { BUSINESS } from "@/lib/business";
+import { serializeSchemaForScript } from "@/lib/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,9 @@ export const metadata: Metadata = {
   description: BUSINESS.tagline,
   applicationName: BUSINESS.name,
   authors: [{ name: BUSINESS.owner }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: `${BUSINESS.name} — Macomb County, MI`,
     description: BUSINESS.tagline,
@@ -48,7 +52,17 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        {/* LocalBusiness structured data (JSON-LD). Payload is built from
+            compile-time constants and `<`-escaped in serializeSchemaForScript,
+            per Next.js's JSON-LD guidance. */}
+        {/* eslint-disable-next-line react/no-danger */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeSchemaForScript() }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
