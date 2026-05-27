@@ -6,7 +6,6 @@ import { CtaBand } from "@/components/sections/cta-band";
 import { ServiceArea } from "@/components/sections/service-area";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
-import { MobileCallBar } from "@/components/mobile-call-bar";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollTopOnLoad } from "@/components/scroll-top-on-load";
 
@@ -31,7 +30,6 @@ export default function Page() {
         <Contact />
       </main>
       <Footer />
-      <MobileCallBar />
     </>
   );
 }
