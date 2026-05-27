@@ -50,19 +50,13 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-brand-cream bg-dot-grid py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-2xl">
-            <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
-              See it for yourself
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
-              Recent work
-            </h2>
-          </div>
-          {/* Low-key honesty note — sample photos until Mike's real ones land. */}
-          <p className="text-sm italic text-brand-ink/55">
-            Sample photos — real job photos coming soon.
+        <div className="max-w-2xl">
+          <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
+            See it for yourself
           </p>
+          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
+            Recent work
+          </h2>
         </div>
 
         <ul className="mt-10 grid auto-rows-[15rem] grid-cols-1 gap-4 sm:auto-rows-[16rem] sm:grid-cols-2 lg:grid-cols-3">
