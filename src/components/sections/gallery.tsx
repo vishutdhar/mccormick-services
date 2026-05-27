@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * Recent work gallery — real photos in a tasteful asymmetric grid (NOT a
+ * Services gallery — illustrative photos in a tasteful asymmetric grid (NOT a
  * slider). The portrait power-washing shot becomes a tall tile spanning two
  * rows on the left; the three landscape shots fill the right. Captions live
  * in a forest gradient overlay on each tile, hero-style, so they stay legible
