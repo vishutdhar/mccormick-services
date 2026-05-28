@@ -136,6 +136,9 @@
   }
   html {
     @apply font-sans;
+    /* Keep in-page anchor targets clear of the fixed SiteHeader (h-16 = 4rem)
+       when it is revealed, so jumped-to sections aren't tucked under the bar. */
+    scroll-padding-top: 5rem;
   }
   /* Accessibility: hide skip link off-screen using transform (height-independent).
      Never use top: -40px — element height routinely exceeds 40px. */

@@ -8,6 +8,7 @@ import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollTopOnLoad } from "@/components/scroll-top-on-load";
+import { SiteHeader } from "@/components/site-header";
 
 export default function Page() {
   return (
@@ -20,6 +21,7 @@ export default function Page() {
       >
         Skip to main content
       </a>
+      <SiteHeader />
       <main className="flex-1">
         <Hero />
         <Services />
