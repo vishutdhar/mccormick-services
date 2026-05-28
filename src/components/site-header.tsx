@@ -40,15 +40,24 @@ const NAV_LINKS = [
 ] as const;
 
 export function SiteHeader() {
-  // Default `false` (visible) so the server-rendered / no-JS markup shows a
-  // working header. JS flips this to hide the bar over the hero.
-  const [hiddenOverHero, setHiddenOverHero] = useState(false);
-  // Transitions are enabled one frame AFTER the first measurement, so the
-  // initial hide (if we load at the top) snaps instantly instead of animating
-  // up — no slide-in glitch on first paint.
+  // Hydrated initial state is HIDDEN. A fresh load lands at the top (over the
+  // hero), where the bar should be hidden anyway — so the server markup and
+  // the first client render agree, and there is no flash of the bar over the
+  // hero before the effect runs. The no-JS fallback is handled separately by
+  // the <noscript> override below (which forces the bar visible), so starting
+  // hidden here does NOT strand JS-disabled visitors.
+  const [hiddenOverHero, setHiddenOverHero] = useState(true);
+  // Whether JS has taken over. Until then we must not apply `inert`, or a
+  // no-JS visitor (whose bar the <noscript> rule reveals) would get a header
+  // with dead links. SSR / first render = false → interactive.
+  const [mounted, setMounted] = useState(false);
+  // Transitions are enabled one frame AFTER mount, so the first measurement
+  // (e.g. a deep-linked load landing mid-page) snaps instantly instead of
+  // animating — no slide glitch on first paint.
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const measure = () => {
       // Reveal once the visitor is roughly past the hero. Capped so very tall
       // viewports don't push the reveal point unreasonably far down.
@@ -69,12 +78,20 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header
-      // While hidden over the hero the bar is only visually offscreen, so mark
-      // it inert to keep its links out of the tab order and pointer flow until
-      // it is actually revealed. SSR / no-JS renders it interactive (false).
-      inert={hiddenOverHero}
-      className={`fixed inset-x-0 top-0 z-40 border-b border-brand-cream/10 bg-brand-forest/95 shadow-lg shadow-brand-ink/20 backdrop-blur-md ${
+    <>
+      {/* No-JS fallback, kept SEPARATE from the hydrated initial state: with JS
+          off, the reveal logic never runs, so force the bar to its visible,
+          interactive resting state. (With JS on, this <style> is inert.) */}
+      <noscript>
+        <style>{`.site-header{transform:none!important;opacity:1!important;pointer-events:auto!important}`}</style>
+      </noscript>
+      <header
+        // While hidden over the hero the bar is only visually offscreen, so mark
+        // it inert to keep its links out of the tab order and pointer flow until
+        // it is revealed. Only once JS has mounted — otherwise a no-JS visitor
+        // (whose bar <noscript> reveals) would get dead, unfocusable links.
+        inert={mounted && hiddenOverHero}
+        className={`site-header fixed inset-x-0 top-0 z-40 border-b border-brand-cream/10 bg-brand-forest/95 shadow-lg shadow-brand-ink/20 backdrop-blur-md ${
         animate
           ? "transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           : ""
@@ -126,6 +143,7 @@ export function SiteHeader() {
           </span>
         </a>
       </div>
-    </header>
+      </header>
+    </>
   );
 }
