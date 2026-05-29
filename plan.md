@@ -1,6 +1,8 @@
 # McCormick Services — Website Improvement Plan
 
-> **Status:** research complete, nothing implemented yet (2026-05-29).
+> **Status (2026-05-29):** §1 "Buildable now" is **shipped** in PR #7 (commits `8e73d11`
+> + `7e22591`) — all 7 items done; see checkmarks below. Everything else is still open
+> and mostly blocked on the owner (§2) or is off-page/process (§3) / later (§4).
 > **Source:** 8-dimension research pass (conversion/CRO, local SEO, trust, content,
 > accessibility & legal, performance, analytics, growth), with every high/medium
 > idea adversarially verified against the actual source files and against what is
@@ -26,7 +28,7 @@ recommendation is correct & current (2026) · **Dep**: `now` (no owner input) /
 
 Ordered by impact-per-effort. These can ship as PRs today.
 
-- [ ] **Cookieless conversion analytics on every Call/Text tap** — *high · S · 92% · now*
+- [x] **Cookieless conversion analytics on every Call/Text tap** — *high · S · 92% · now* — ✓ shipped (PR #7). `@vercel/analytics` + `LeadTracking` delegated listener firing `contact_tap` {kind, where}. Custom events only flow once on Vercel.
   - Vercel Web Analytics + a custom event on each `tel:`/`sms:` tap. Default to cookieless
     Vercel Analytics over GA4 since there is no privacy policy/consent banner.
   - **Prerequisite for everything else** — today every tap is invisible, so Mike can't tell
@@ -34,32 +36,27 @@ Ordered by impact-per-effort. These can ship as PRs today.
   - tel:/sms: are centralized in `formatTelHref`/`formatSmsHref` (`src/lib/business.ts`),
     used at ~6 call sites (hero, header, contact ×3, footer, cta-band) → one shared handler
     wires them all.
-- [ ] **Mirror the 8 service-area cities into JSON-LD `areaServed` as `City[]`** — *med · S · 84% · now*
+- [x] **Mirror the 8 service-area cities into JSON-LD `areaServed` as `City[]`** — *med · S · 84% · now* — ✓ shipped (PR #7).
   - `schema.ts` currently declares one `AdministrativeArea` ("Macomb County"); the 8 towns
     already exist in `SERVICE_AREA_CITIES` (`business.ts`) and render on the page.
   - Gives an explicit relevance signal for the exact "power washing Sterling Heights"
     queries locals type. Derives from the existing constant, so it can't drift.
-- [ ] **Render business hours on the page** (Contact + footer) — *med · S · 80% · now (confirm w/ Mike)*
+- [x] **Render business hours on the page** (Contact + footer) — *med · S · 80% · now* — ✓ shipped (PR #7) via `groupedBusinessHours()`. ⚠️ STILL confirm with Mike that Mon–Fri 8–6 / Sat 9–3 / Sun closed is accurate.
   - Hours live in `business.ts` and feed JSON-LD `openingHoursSpecification` (`schema.ts`)
     but render to no human. Sets the "call on the days he answers" expectation.
   - **UX, not SEO** (Google reads hours from GBP, not the page). Reuse `BUSINESS.hours` —
     no second source of truth. Confirm hours are still accurate before shipping.
-- [ ] **Mobile sticky bottom Call/Text bar** (mobile only, hidden `lg+`) — *med · S · 85% · now*
+- [x] **Mobile sticky bottom Call/Text bar** (mobile only, hidden `lg+`) — *med · S · 85% · now* — ✓ shipped (PR #7).
   - The header Call button is hidden until ~0.65 viewports of scroll; no pinned affordance
     during the highest-intent first moments on a phone. Reuses the tel/sms helpers.
-  - ⚠️ **Do this AFTER analytics** so the lift is observable (cited 15–32% figures are
-    vendor folklore until measured). Note: a *bottom* bar doesn't overlap the hero, unlike
-    the top mobile bar previously removed.
-- [ ] **Quote-form a11y: `role="status"` / `aria-live="polite"` + move focus on state change** — *low · S · 88% · now*
+  - **As shipped (after declutter, `7e22591`):** reveals on scroll (hidden over the hero) and
+    the top SiteHeader is now hidden below `lg` — so each platform has exactly ONE persistent
+    CTA (top header on desktop, this bar on mobile), never the stacked-buttons clutter.
+- [x] **Quote-form a11y: `role="status"` / `aria-live="polite"` + move focus on state change** — *low · S · 88% · now* — ✓ shipped (PR #7). Visible once the form is live.
   - `quote-form.tsx` success/error `<p>` have no live region or focus management — screen-reader
     users can't tell if submit worked. Only takes visible effect once the form is live.
-- [ ] **Microcopy: same-day-response promise on hero + sticky CTAs** — *low · S · ~75% · now*
-  - The speed promise exists only in Contact/CtaBand. Make the differentiator travel with
-    every tap (e.g. "Free quote — most calls answered same day"). Pure copy.
-- [ ] **Soften the secondary "Get a Free Quote" button until the form is live** — *low · S · 62% · now*
-  - Hero/cta-band/service-cards all point at `#contact`, which currently lands on the
-    "Quote by phone" fallback card (form gated by `REPLACE_ME`). Keep Call the unambiguous
-    primary until the form goes live. Partly self-resolves once the form is live.
+- [x] **Microcopy: same-day-response promise on hero** — *low · S · ~75% · now* — ✓ shipped (PR #7): "Free quotes · most calls answered the same day" under the hero CTAs. (Bottom bar kept buttons-only after the declutter.)
+- [x] **Soften the secondary "Get a Free Quote" button** — *low · S · 62% · now* — ✓ shipped (PR #7): hero + cta-band secondary eased to a lighter outline so the lime Call is the clear primary. Fully self-resolves once the form is live.
 
 ---
 
@@ -208,9 +205,8 @@ These aren't code, but several out-rank any on-page tweak for a solo operator.
 
 ## Suggested sequencing
 
-1. **Now, no Mike, one PR:** analytics (first) → `areaServed` City[] → hours on page →
-   form a11y → CTA microcopy. (Sticky bottom bar lands in a follow-up *after* analytics is
-   collecting, so the lift is observable.)
+1. ~~**Now, no Mike, one PR:** analytics → `areaServed` City[] → hours → form a11y → CTA
+   microcopy → mobile bar.~~ ✓ **DONE — PR #7** (`8e73d11` + `7e22591`).
 2. **Mike session ("button it up"):** GBP setup → collect photos + review quotes →
    Formspree endpoint → insurance/license answer → "Meet Mike" copy/photo → citations.
    Then ship the photo swap, testimonials section, live form, insurance chip in a second PR.
