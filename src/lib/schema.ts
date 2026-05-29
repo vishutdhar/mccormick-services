@@ -3,6 +3,7 @@ import {
   PRIMARY_PHONE,
   SECONDARY_PHONE,
   SERVICES,
+  SERVICE_AREA_CITIES,
   formatTelHref,
 } from "./business";
 
@@ -25,10 +26,14 @@ export function buildLocalBusinessSchema() {
     image: `${BUSINESS.url}/work/curb-appeal-home.jpg`,
     telephone: toE164(PRIMARY_PHONE),
     priceRange: BUSINESS.priceRange,
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: BUSINESS.areaServed,
-    },
+    // The county (broad signal) plus each served town as a City node, so the
+    // exact city-level searches locals type ("power washing Sterling Heights")
+    // have an explicit relevance match. Mirrors SERVICE_AREA_CITIES, which is
+    // already rendered on the page, so the two can never disagree.
+    areaServed: [
+      { "@type": "AdministrativeArea", name: BUSINESS.areaServed },
+      ...SERVICE_AREA_CITIES.map((city) => ({ "@type": "City", name: city })),
+    ],
     address: {
       "@type": "PostalAddress",
       addressRegion: BUSINESS.state,

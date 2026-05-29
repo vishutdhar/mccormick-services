@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { BUSINESS } from "@/lib/business";
 import { serializeSchemaForScript } from "@/lib/schema";
@@ -62,6 +63,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeSchemaForScript() }}
         />
         {children}
+        {/* Cookieless Vercel Web Analytics: pageviews + custom contact-tap
+            events (see LeadTracking). No cookies → no consent banner needed. */}
+        <Analytics />
       </body>
     </html>
   );

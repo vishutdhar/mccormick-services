@@ -70,7 +70,7 @@ export function CtaBand() {
             </a>
             <a
               href="#contact"
-              className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-full border-2 border-brand-cream/80 bg-brand-cream/10 px-7 py-3 font-display text-base font-semibold text-brand-cream backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-brand-cream hover:text-brand-forest hover:shadow-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-cream/60 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest active:translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-full border border-brand-cream/45 px-7 py-3 font-display text-base font-semibold text-brand-cream backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-brand-cream hover:bg-brand-cream hover:text-brand-forest hover:shadow-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-cream/60 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest active:translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Get a Free Quote
               <ArrowRight className="size-5" aria-hidden="true" />

@@ -1,12 +1,19 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { SERVICES } from "@/lib/business";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function QuoteForm({ endpoint }: { endpoint: string }) {
   const [status, setStatus] = useState<Status>("idle");
+  // On success the form is replaced by a confirmation message; move focus to it
+  // so screen-reader and keyboard users are told the submission worked (the
+  // aria-live region also announces it for users who didn't have focus here).
+  const successRef = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,7 +44,13 @@ export function QuoteForm({ endpoint }: { endpoint: string }) {
 
   if (status === "success") {
     return (
-      <p className="rounded-md bg-brand-lime-soft text-brand-forest p-4 font-display text-lg">
+      <p
+        ref={successRef}
+        role="status"
+        aria-live="polite"
+        tabIndex={-1}
+        className="rounded-md bg-brand-lime-soft text-brand-forest p-4 font-display text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest/40"
+      >
         Thanks — we’ll be in touch shortly.
       </p>
     );
@@ -137,7 +150,7 @@ export function QuoteForm({ endpoint }: { endpoint: string }) {
       </button>
 
       {status === "error" && (
-        <p className="text-red-700">
+        <p role="alert" className="text-red-700">
           Sorry — we couldn’t send your message. Please call 586-909-0027 instead.
         </p>
       )}
