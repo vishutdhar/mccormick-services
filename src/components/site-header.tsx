@@ -100,7 +100,7 @@ export function SiteHeader() {
         // it is revealed. Only once JS has mounted — otherwise a no-JS visitor
         // (whose bar <noscript> reveals) would get dead, unfocusable links.
         inert={mounted && hiddenOverHero}
-        className={`site-header fixed inset-x-0 top-0 z-40 border-b border-brand-cream/10 bg-brand-forest/95 shadow-lg shadow-brand-ink/20 backdrop-blur-md ${
+        className={`site-header fixed inset-x-0 top-0 z-40 hidden border-b border-brand-cream/10 bg-brand-forest/95 shadow-lg shadow-brand-ink/20 backdrop-blur-md lg:block ${
         animate
           ? "transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           : ""
