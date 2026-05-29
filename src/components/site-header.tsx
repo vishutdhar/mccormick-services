@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Phone } from "lucide-react";
 import { Logo } from "@/components/logo";
 import {
@@ -30,6 +30,10 @@ import {
  * via `scroll-padding-top` on <html> (see globals.css).
  */
 
+/** Stable no-op subscription for the hydration probe below — the value never
+ *  changes after mount, so there is nothing to subscribe to. */
+const noopSubscribe = () => () => {};
+
 /** Desktop anchor links. Each maps to an existing in-page section id. */
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
@@ -49,15 +53,20 @@ export function SiteHeader() {
   const [hiddenOverHero, setHiddenOverHero] = useState(true);
   // Whether JS has taken over. Until then we must not apply `inert`, or a
   // no-JS visitor (whose bar the <noscript> rule reveals) would get a header
-  // with dead links. SSR / first render = false → interactive.
-  const [mounted, setMounted] = useState(false);
+  // with dead links. Returns false on the server and the first hydration
+  // render, then true — the canonical "am I hydrated" probe, with no
+  // setState-in-effect.
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
   // Transitions are enabled one frame AFTER mount, so the first measurement
   // (e.g. a deep-linked load landing mid-page) snaps instantly instead of
   // animating — no slide glitch on first paint.
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const measure = () => {
       // Reveal once the visitor is roughly past the hero. Capped so very tall
       // viewports don't push the reveal point unreasonably far down.

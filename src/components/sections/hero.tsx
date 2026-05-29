@@ -97,19 +97,28 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-full border-2 border-brand-cream/80 bg-brand-cream/10 px-7 py-3 font-display text-base font-semibold text-brand-cream backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:bg-brand-cream hover:text-brand-forest hover:shadow-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-cream/60 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest active:translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-full border border-brand-cream/45 px-7 py-3 font-display text-base font-semibold text-brand-cream backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-brand-cream hover:bg-brand-cream hover:text-brand-forest hover:shadow-lg focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-cream/60 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest active:translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Get a Free Quote
               <ArrowRight className="size-5" aria-hidden="true" />
             </a>
           </div>
 
+          {/* Reassurance that travels with the primary CTAs — the same-day
+              promise otherwise lived only in the Contact/CTA-band sections. */}
+          <p
+            className="reveal mt-5 text-sm font-medium text-brand-cream/80 [text-shadow:0_1px_8px_rgba(26,31,18,0.5)]"
+            style={{ "--reveal-delay": "270ms" } as React.CSSProperties}
+          >
+            Free quotes · most calls answered the same day
+          </p>
+
           {/* Trust badges — only verifiably-true claims. No "insured/licensed"
               here; that unconfirmed claim lives (with a TODO) in the Why
               section only and must not be amplified on the hero. */}
           <ul
             className="reveal mt-9 flex flex-wrap items-center gap-x-3 gap-y-3"
-            style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
+            style={{ "--reveal-delay": "340ms" } as React.CSSProperties}
           >
             {[
               "Owner-operated",

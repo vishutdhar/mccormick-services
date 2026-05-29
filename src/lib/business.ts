@@ -59,6 +59,69 @@ export const SERVICE_AREA_CITIES = [
   "St. Clair Shores",
 ] as const;
 
+/**
+ * Human-facing opening hours, grouped into ranges (e.g. "Mon–Fri" → "8 AM – 6 PM")
+ * with any day missing from BUSINESS.hours shown as "Closed". Derived from the
+ * same BUSINESS.hours that feeds the JSON-LD, so the visible hours can never
+ * drift from the structured data. This is UX expectation-setting (when to call),
+ * NOT an SEO signal — Google reads hours from the Business Profile, not the page.
+ */
+const WEEK = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+] as const;
+
+const DAY_ABBR: Record<(typeof WEEK)[number], string> = {
+  Monday: "Mon",
+  Tuesday: "Tue",
+  Wednesday: "Wed",
+  Thursday: "Thu",
+  Friday: "Fri",
+  Saturday: "Sat",
+  Sunday: "Sun",
+};
+
+function to12Hour(time: string): string {
+  const [h, m] = time.split(":").map(Number);
+  const period = h < 12 ? "AM" : "PM";
+  const hour12 = h % 12 === 0 ? 12 : h % 12;
+  return m === 0
+    ? `${hour12} ${period}`
+    : `${hour12}:${String(m).padStart(2, "0")} ${period}`;
+}
+
+export type HoursLine = { days: string; hours: string };
+
+export function groupedBusinessHours(): HoursLine[] {
+  const byDay = new Map<string, string>(
+    BUSINESS.hours.map((h) => [
+      h.day,
+      `${to12Hour(h.open)} – ${to12Hour(h.close)}`,
+    ]),
+  );
+  const valueFor = (day: (typeof WEEK)[number]) => byDay.get(day) ?? "Closed";
+
+  const lines: HoursLine[] = [];
+  let i = 0;
+  while (i < WEEK.length) {
+    const value = valueFor(WEEK[i]);
+    let j = i;
+    while (j + 1 < WEEK.length && valueFor(WEEK[j + 1]) === value) j++;
+    const label =
+      i === j
+        ? DAY_ABBR[WEEK[i]]
+        : `${DAY_ABBR[WEEK[i]]}–${DAY_ABBR[WEEK[j]]}`;
+    lines.push({ days: label, hours: value });
+    i = j + 1;
+  }
+  return lines;
+}
+
 const digitsOnly = (phone: string): string => phone.replace(/\D+/g, "");
 
 export function formatTelHref(phone: string): string {

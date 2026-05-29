@@ -7,6 +7,7 @@ import {
   SECONDARY_PHONE,
   formatTelHref,
   formatPhoneDisplay,
+  groupedBusinessHours,
 } from "@/lib/business";
 
 /** All service links scroll to the single in-page Services section. */
@@ -17,7 +18,9 @@ export function Footer() {
 
   return (
     <footer className="bg-brand-forest bg-forest-weave text-brand-cream">
-      <div className="mx-auto max-w-6xl px-6 py-16 sm:px-8">
+      {/* Extra bottom padding below `lg` so the fixed MobileCallBar never
+          covers the footer's last rows. */}
+      <div className="mx-auto max-w-6xl px-6 pt-16 pb-28 sm:px-8 lg:pb-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* 1: brand */}
           <div>
@@ -79,6 +82,25 @@ export function Footer() {
               Serving {BUSINESS.areaServed} — owned and operated by{" "}
               {BUSINESS.owner}.
             </p>
+
+            <h2 className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-lime">
+              Hours
+            </h2>
+            <ul className="mt-3 space-y-1 text-sm text-brand-cream/70">
+              {groupedBusinessHours().map((line) => (
+                <li
+                  key={line.days}
+                  className="flex max-w-[13rem] justify-between gap-4"
+                >
+                  <span>{line.days}</span>
+                  <span
+                    className={line.hours === "Closed" ? "text-brand-cream/40" : ""}
+                  >
+                    {line.hours}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

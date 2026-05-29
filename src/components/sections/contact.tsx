@@ -1,4 +1,4 @@
-import { Phone, MessageSquareText } from "lucide-react";
+import { Phone, MessageSquareText, Clock } from "lucide-react";
 import { QuoteForm } from "@/components/quote-form";
 import {
   PRIMARY_PHONE,
@@ -6,6 +6,7 @@ import {
   formatTelHref,
   formatSmsHref,
   formatPhoneDisplay,
+  groupedBusinessHours,
 } from "@/lib/business";
 
 /**
@@ -93,6 +94,36 @@ export function Contact() {
               <MessageSquareText className="size-5" aria-hidden="true" />
               Prefer to text? Tap to text
             </a>
+
+            {/* Hours — sets the "call on the days he answers" expectation.
+                Driven off BUSINESS.hours (same source as the JSON-LD). */}
+            <div className="mt-8">
+              <h4 className="flex items-center gap-2 font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
+                <Clock className="size-4" aria-hidden="true" />
+                Hours
+              </h4>
+              <dl className="mt-3 max-w-xs space-y-1.5">
+                {groupedBusinessHours().map((line) => (
+                  <div
+                    key={line.days}
+                    className="flex items-baseline justify-between gap-6"
+                  >
+                    <dt className="font-display font-semibold text-brand-forest">
+                      {line.days}
+                    </dt>
+                    <dd
+                      className={
+                        line.hours === "Closed"
+                          ? "text-brand-ink/45"
+                          : "text-brand-ink/75"
+                      }
+                    >
+                      {line.hours}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
 
           {/* Right: the quote form (or graceful fallback). Lime top-rule ties

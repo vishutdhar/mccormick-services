@@ -4,6 +4,7 @@ import {
   formatTelHref,
   formatSmsHref,
   formatPhoneDisplay,
+  groupedBusinessHours,
   PRIMARY_PHONE,
   SECONDARY_PHONE,
   SERVICES,
@@ -56,5 +57,16 @@ describe("business constants", () => {
     for (const city of SERVICE_AREA_CITIES) {
       expect(city).toMatch(/^[A-Z][A-Za-z. ]+$/);
     }
+  });
+
+  it("groups opening hours into human ranges with closed days marked", () => {
+    // Spec: collapse runs of identical days, 12-hour display, any day absent
+    // from BUSINESS.hours shows as "Closed". Current data = Mon–Fri 8–18,
+    // Sat 9–15, no Sunday.
+    expect(groupedBusinessHours()).toEqual([
+      { days: "Mon–Fri", hours: "8 AM – 6 PM" },
+      { days: "Sat", hours: "9 AM – 3 PM" },
+      { days: "Sun", hours: "Closed" },
+    ]);
   });
 });
