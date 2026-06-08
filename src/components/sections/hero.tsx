@@ -66,7 +66,7 @@ export function Hero() {
           >
             <Logo width={44} className="drop-shadow-md" />
             <span className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-brand-lime sm:text-sm">
-              Power washing · Painting · Lawn care · Fall cleaning
+              Power washing · Exterior painting · Lawn care · Fall cleaning
             </span>
           </div>
 

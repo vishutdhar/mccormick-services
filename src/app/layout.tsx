@@ -20,7 +20,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
-    default: `${BUSINESS.name} | Power Washing, Painting, Lawn Care | Macomb County MI`,
+    default: `${BUSINESS.name} | Power Washing, Exterior Painting, Lawn Care | Macomb County MI`,
     template: `%s | ${BUSINESS.name}`,
   },
   description: BUSINESS.tagline,

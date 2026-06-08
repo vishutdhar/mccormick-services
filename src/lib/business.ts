@@ -5,19 +5,20 @@ export const BUSINESS = {
   name: "McCormick Services",
   owner: "Mike McCormick",
   tagline:
-    "Power washing, painting, lawn care, and fall cleaning across Macomb County, Michigan.",
+    "Power washing, exterior painting, lawn care, and fall cleaning across Macomb County, Michigan.",
   areaServed: "Macomb County, Michigan",
   state: "MI",
   country: "US",
   priceRange: "$$",
   url: "https://mccormick-services.vercel.app",
   hours: [
-    { day: "Monday", open: "08:00", close: "18:00" },
-    { day: "Tuesday", open: "08:00", close: "18:00" },
-    { day: "Wednesday", open: "08:00", close: "18:00" },
-    { day: "Thursday", open: "08:00", close: "18:00" },
-    { day: "Friday", open: "08:00", close: "18:00" },
-    { day: "Saturday", open: "09:00", close: "15:00" },
+    { day: "Monday", open: "07:00", close: "19:00" },
+    { day: "Tuesday", open: "07:00", close: "19:00" },
+    { day: "Wednesday", open: "07:00", close: "19:00" },
+    { day: "Thursday", open: "07:00", close: "19:00" },
+    { day: "Friday", open: "07:00", close: "19:00" },
+    { day: "Saturday", open: "07:00", close: "19:00" },
+    { day: "Sunday", open: "07:00", close: "19:00" },
   ],
 } as const;
 
@@ -26,25 +27,25 @@ export const SERVICES = [
     slug: "power-washing",
     title: "Power Washing",
     description:
-      "Driveways, siding, decks, patios, and fences brought back to life.",
+      "Driveways, siding, decks, patios, and fences brought back to life — plus gentle soft washing for surfaces a pressure blast would damage.",
   },
   {
     slug: "painting",
-    title: "Painting",
+    title: "Exterior Painting",
     description:
-      "Interior and exterior painting with clean lines and tidy workspaces.",
+      "Exterior spray painting — siding, fences, decks, and trim finished clean and even.",
   },
   {
     slug: "lawn-care",
     title: "Lawn Care",
     description:
-      "Mowing, edging, trimming, and seasonal upkeep on a schedule that works for you.",
+      "Mowing, edging, shrub trimming, and seasonal yard upkeep on a schedule that works for you.",
   },
   {
     slug: "fall-cleaning",
     title: "Fall Cleaning",
     description:
-      "Leaf removal, gutter clearing, and yard prep before the snow flies.",
+      "Leaf removal, gutter clearing, and yard prep before the snow flies — plus snow plowing once it does.",
   },
 ] as const;
 

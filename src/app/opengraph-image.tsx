@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const alt =
-  "McCormick Services — Power Washing, Painting, Lawn Care, Fall Cleaning | Macomb County, MI";
+  "McCormick Services — Power Washing, Exterior Painting, Lawn Care, Fall Cleaning | Macomb County, MI";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -101,7 +101,7 @@ export default async function Image() {
               maxWidth: 920,
             }}
           >
-            Power washing · Painting · Lawn care · Fall cleaning
+            Power washing · Exterior painting · Lawn care · Fall cleaning
           </div>
         </div>
       </div>
