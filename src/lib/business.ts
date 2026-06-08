@@ -5,7 +5,7 @@ export const BUSINESS = {
   name: "McCormick Services",
   owner: "Mike McCormick",
   tagline:
-    "Power washing, painting, lawn care, and fall cleaning across Macomb County, Michigan.",
+    "Power washing, exterior painting, lawn care, and fall cleaning across Macomb County, Michigan.",
   areaServed: "Macomb County, Michigan",
   state: "MI",
   country: "US",
