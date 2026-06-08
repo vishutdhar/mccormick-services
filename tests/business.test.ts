@@ -22,7 +22,7 @@ describe("business constants", () => {
   it("lists all four card services in display order", () => {
     expect(SERVICES.map((s) => s.title)).toEqual([
       "Power Washing",
-      "Painting",
+      "Exterior Painting",
       "Lawn Care",
       "Fall Cleaning",
     ]);
@@ -61,12 +61,10 @@ describe("business constants", () => {
 
   it("groups opening hours into human ranges with closed days marked", () => {
     // Spec: collapse runs of identical days, 12-hour display, any day absent
-    // from BUSINESS.hours shows as "Closed". Current data = Mon–Fri 8–18,
-    // Sat 9–15, no Sunday.
+    // from BUSINESS.hours shows as "Closed". Current data = open 7 AM–7 PM
+    // every day, so all seven collapse into a single Mon–Sun line.
     expect(groupedBusinessHours()).toEqual([
-      { days: "Mon–Fri", hours: "8 AM – 6 PM" },
-      { days: "Sat", hours: "9 AM – 3 PM" },
-      { days: "Sun", hours: "Closed" },
+      { days: "Mon–Sun", hours: "7 AM – 7 PM" },
     ]);
   });
 });
