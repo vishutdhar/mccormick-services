@@ -4,6 +4,37 @@ How this site is hosted, deployed, and domained — and the non-obvious gotchas 
 cost time the first time. Last updated **2026-06-08** (migration to Mike's accounts +
 custom domain launch).
 
+## Accounts & access — READ FIRST
+
+This project lives entirely under **Mike's** accounts, not the developer's (Vishut's).
+
+- **GitHub:** the canonical repo is on **Mike's** GitHub (`mccormickservices84-art`). Pushes to
+  it require **Mike's** credentials — Vishut is not a collaborator.
+- **Vercel:** deploys run under **Mike's** Vercel (`mccormickservices84@gmail.com`, team
+  `mike-mccormik`). Both the `gh` CLI and the Vercel CLI hold **one active account at a time**,
+  so Mike's and Vishut's logins can't both be active at once.
+
+**Per-session protocol:**
+
+1. **Start of a session on this project:** log in to **Mike's** GitHub and **Mike's** Vercel.
+   ```bash
+   gh auth login                      # authenticate as mccormickservices84-art
+   npx vercel@latest login            # authenticate as Mike (mccormickservices84@gmail.com)
+   ```
+2. Do the work — deploy (`npx vercel@latest --prod --yes --scope mike-mccormik`) and
+   `git push --no-verify mike main`.
+3. **End of the session:** log Mike back **out** and restore the developer's own accounts so
+   other projects work normally.
+   ```bash
+   gh auth logout --user mccormickservices84-art
+   npx vercel@latest logout           # then `npx vercel@latest login` as Vishut
+   ```
+4. Next session, repeat from step 1.
+
+> If a GitHub push to **Mike's** repo 403s, or a push to a **personal** repo is "denied to
+> mccormickservices84-art", the wrong account is active / cached — check `gh auth status` and
+> the osxkeychain `github.com` entry (see Gotcha 4 below).
+
 ## Live
 
 - **Production:** <https://mccormickpros.com> (and `www.mccormickpros.com` → same project)
