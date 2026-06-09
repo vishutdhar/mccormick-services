@@ -62,6 +62,7 @@ export function MobileCallBar() {
         <style>{`.mobile-call-bar{transform:none!important;opacity:1!important;pointer-events:auto!important}`}</style>
       </noscript>
       <div
+        id="mobile-call-bar"
         inert={mounted && hiddenOverHero}
         className={`mobile-call-bar fixed inset-x-0 bottom-0 z-40 border-t border-brand-cream/10 bg-brand-forest/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md lg:hidden ${
           animate

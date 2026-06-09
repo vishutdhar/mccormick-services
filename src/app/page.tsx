@@ -7,7 +7,6 @@ import { ServiceArea } from "@/components/sections/service-area";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { ScrollTopOnLoad } from "@/components/scroll-top-on-load";
 import { SiteHeader } from "@/components/site-header";
 import { LeadTracking } from "@/components/lead-tracking";
 import { MobileCallBar } from "@/components/mobile-call-bar";
@@ -15,7 +14,6 @@ import { MobileCallBar } from "@/components/mobile-call-bar";
 export default function Page() {
   return (
     <>
-      <ScrollTopOnLoad />
       <ScrollReveal />
       <LeadTracking />
       <a

@@ -57,7 +57,6 @@ export default function RootLayout({
         {/* LocalBusiness structured data (JSON-LD). Payload is built from
             compile-time constants and `<`-escaped in serializeSchemaForScript,
             per Next.js's JSON-LD guidance. */}
-        {/* eslint-disable-next-line react/no-danger */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeSchemaForScript() }}
