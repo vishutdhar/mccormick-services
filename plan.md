@@ -1,5 +1,20 @@
 # McCormick Services — Website Improvement Plan
 
+> **Status (2026-06-08) — LAUNCHED on the real domain + owner-confirmed content:**
+> The site is **live at https://mccormickpros.com** (SSL valid), now hosted on **Mike's
+> own Vercel** and built from **Mike's own GitHub repo** (`mccormickservices84-art/mccormickpros`).
+> Owner-confirmed changes shipped this session (all live): hours → **7 AM–7 PM every day**;
+> painting → **exterior only**; soft washing + snow plowing surfaced; **single phone number
+> (586-840-6888, the iMessage line) for all call + text**; gallery reframed as service
+> illustrations (no "sample photos" claim); canonical/sitemap/schema → mccormickpros.com.
+> One Codex review round addressed (deep-link scroll, mobile-bar analytics, lint → 0 warnings).
+> See `docs/DEPLOYMENT.md` for the live infrastructure + deploy gotchas.
+>
+> **Still open / next (owner-dependent, scheduled for Sat 2026-06-13 9 AM when Mike is back):**
+> Google Business Profile + Google Search Console (both need Mike's Google account). **Pending
+> Mike's decision:** rename brand **"McCormick Services" → "McCormick Pros"** to match the
+> domain — DECIDE THIS BEFORE creating GBP (renaming a GBP after creation is painful).
+>
 > **Status (2026-05-29):** §1 "Buildable now" is **shipped** in PR #7 (commits `8e73d11`
 > + `7e22591`) — all 7 items done; see checkmarks below. Everything else is still open
 > and mostly blocked on the owner (§2) or is off-page/process (§3) / later (§4).
