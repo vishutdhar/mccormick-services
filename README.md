@@ -1,17 +1,17 @@
 # McCormick Services
 
-The website for McCormick Services — power washing, painting, lawn care, and fall cleaning across Macomb County, Michigan.
+The website for McCormick Services — power washing, exterior painting, lawn care, and seasonal cleanup across Macomb County, Michigan. **Live at <https://mccormickpros.com>.**
 
 ## Where everything lives
 
 | What you want to change | File |
 | --- | --- |
-| Business name, owner, phones, tagline, hours, price range | `src/lib/business.ts` |
+| Business name, owner, phone, tagline, hours, price range | `src/lib/business.ts` |
 | List of services and descriptions | `src/lib/business.ts` (`SERVICES`) |
 | Cities you serve | `src/lib/business.ts` (`SERVICE_AREA_CITIES`) |
 | Hero copy | `src/components/sections/hero.tsx` |
 | Trust strip wording | `src/components/sections/why.tsx` |
-| Gallery photos | `public/placeholder/` — drop new images in and update `src/components/sections/gallery.tsx` |
+| Gallery / hero photos | `public/work/` and `public/hero/` — drop new images in and update `src/components/sections/gallery.tsx` / `hero.tsx` (currently stock illustrations, framed as service examples — not Mike's own jobs) |
 | Footer | `src/components/sections/footer.tsx` |
 
 ## Running locally
@@ -37,21 +37,29 @@ To change the destination email: log into Formspree, edit the form's destination
 
 ## Deploying
 
-Hosted on Vercel. To deploy a new version:
+**Live at <https://mccormickpros.com>**, hosted on Mike's Vercel (team `mike-mccormik`,
+project `mccormickpros`). Git auto-deploy is **not** connected yet, so deploys are run
+from the CLI:
 
 ```bash
-git push origin main
+npx vercel@latest --prod --yes --scope mike-mccormik
 ```
 
-Vercel builds automatically on push.
+> Two things that will bite you if you skip them — see `docs/DEPLOYMENT.md` for the full
+> story:
+> 1. **Commits must be authored by Mike**, or Vercel's free-tier rule blocks the deploy
+>    (`TEAM_ACCESS_REQUIRED`). This repo's git author is already set to Mike.
+> 2. Use `npx vercel@latest`, not the older Homebrew `vercel`.
 
-## Pointing a custom domain
+## Custom domain
 
-1. Buy a domain (Cloudflare Registrar or Namecheap, ~$12/year).
-2. In Vercel → project → Settings → Domains → add the domain.
-3. Follow Vercel's DNS instructions at your registrar.
-4. Vercel issues a free SSL certificate automatically.
+Already live: `mccormickpros.com` (registered at Hostinger, DNS kept at Hostinger).
+The records are `A @ → 76.76.21.21` and `CNAME www → cname.vercel-dns.com`. Vercel issued
+the SSL certificate automatically. Full details in `docs/DEPLOYMENT.md`.
 
-## Updating phones
+## Updating the phone number
 
-Edit `PRIMARY_PHONE` and `SECONDARY_PHONE` in `src/lib/business.ts`. Every place on the site that shows a phone updates from these constants.
+The business uses **one** number — `PRIMARY_PHONE` in `src/lib/business.ts` (currently
+586-840-6888, Mike's iMessage-capable line). Every call/text link and displayed number on
+the site derives from this single constant, including the JSON-LD and the quote-form
+fallback.
