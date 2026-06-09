@@ -10,7 +10,7 @@ export const BUSINESS = {
   state: "MI",
   country: "US",
   priceRange: "$$",
-  url: "https://mccormick-services.vercel.app",
+  url: "https://mccormickpros.com",
   hours: [
     { day: "Monday", open: "07:00", close: "19:00" },
     { day: "Tuesday", open: "07:00", close: "19:00" },
