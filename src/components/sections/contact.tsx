@@ -2,7 +2,6 @@ import { Phone, MessageSquareText, Clock } from "lucide-react";
 import { QuoteForm } from "@/components/quote-form";
 import {
   PRIMARY_PHONE,
-  SECONDARY_PHONE,
   formatTelHref,
   formatSmsHref,
   formatPhoneDisplay,
@@ -59,36 +58,14 @@ export function Contact() {
                 <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-lime text-brand-forest">
                   <Phone className="size-5" aria-hidden="true" />
                 </span>
-                <span>
-                  <span className="block text-xs uppercase tracking-wide text-brand-cream/70">
-                    Primary
-                  </span>
-                  <span className="font-display text-2xl font-bold sm:text-3xl">
-                    {formatPhoneDisplay(PRIMARY_PHONE)}
-                  </span>
-                </span>
-              </a>
-
-              <a
-                href={formatTelHref(SECONDARY_PHONE)}
-                className="group flex min-h-[3.5rem] items-center gap-4 rounded-2xl border-2 border-brand-forest/15 bg-white px-5 py-4 text-brand-forest transition-colors hover:border-brand-forest/30 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-forest/40"
-              >
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-lime-soft text-brand-forest">
-                  <Phone className="size-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block text-xs uppercase tracking-wide text-brand-olive">
-                    Secondary
-                  </span>
-                  <span className="font-display text-2xl font-bold sm:text-3xl">
-                    {formatPhoneDisplay(SECONDARY_PHONE)}
-                  </span>
+                <span className="font-display text-2xl font-bold sm:text-3xl">
+                  {formatPhoneDisplay(PRIMARY_PHONE)}
                 </span>
               </a>
             </div>
 
             <a
-              href={formatSmsHref(SECONDARY_PHONE)}
+              href={formatSmsHref(PRIMARY_PHONE)}
               className="mt-5 inline-flex min-h-[2.75rem] items-center gap-2 self-start font-display font-semibold text-brand-olive transition-colors hover:text-brand-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest/40 focus-visible:ring-offset-2"
             >
               <MessageSquareText className="size-5" aria-hidden="true" />

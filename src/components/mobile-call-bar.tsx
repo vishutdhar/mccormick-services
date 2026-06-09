@@ -4,7 +4,6 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { Phone, MessageSquareText } from "lucide-react";
 import {
   PRIMARY_PHONE,
-  SECONDARY_PHONE,
   formatTelHref,
   formatSmsHref,
 } from "@/lib/business";
@@ -83,7 +82,7 @@ export function MobileCallBar() {
             Call Mike
           </a>
           <a
-            href={formatSmsHref(SECONDARY_PHONE)}
+            href={formatSmsHref(PRIMARY_PHONE)}
             className="inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full border-2 border-brand-cream/40 px-5 font-display text-sm font-semibold text-brand-cream transition-colors hover:border-brand-cream/70 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-brand-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-forest active:translate-y-px"
           >
             <MessageSquareText className="size-4 shrink-0" aria-hidden="true" />
