@@ -10,7 +10,7 @@ This project lives entirely under **Mike's** accounts, not the developer's (Vish
 
 - **GitHub:** the canonical repo is on **Mike's** GitHub (`mccormickservices84-art`). Pushes to
   it require **Mike's** credentials — Vishut is not a collaborator.
-- **Vercel:** deploys run under **Mike's** Vercel (`mccormickservices84@gmail.com`, team
+- **Vercel:** deploys run under **Mike's** Vercel (`<owner-google-email>`, team
   `mike-mccormik`). Both the `gh` CLI and the Vercel CLI hold **one active account at a time**,
   so Mike's and Vishut's logins can't both be active at once.
 
@@ -19,7 +19,7 @@ This project lives entirely under **Mike's** accounts, not the developer's (Vish
 1. **Start of a session on this project:** log in to **Mike's** GitHub and **Mike's** Vercel.
    ```bash
    gh auth login                      # authenticate as mccormickservices84-art
-   npx vercel@latest login            # authenticate as Mike (mccormickservices84@gmail.com)
+   npx vercel@latest login            # authenticate as Mike (<owner-google-email>)
    ```
 2. Do the work — deploy (`npx vercel@latest --prod --yes --scope mike-mccormik`) and
    `git push --no-verify mike main`.
@@ -49,7 +49,7 @@ This project lives entirely under **Mike's** accounts, not the developer's (Vish
 | **Personal mirror** | `vishutdhar/mccormick-services` (Vishut's portfolio copy — **not** the source of truth for the live site) |
 | **Vercel team** | `mike-mccormik` ("Mike's projects", Hobby/free plan) |
 | **Vercel project** | `mccormickpros` |
-| **Vercel owner account** | Mike — `mccormickservices84@gmail.com` |
+| **Vercel owner account** | Mike — `<owner-google-email>` |
 | **Domain registrar** | Hostinger |
 | **DNS** | Kept at Hostinger (nameservers unchanged) |
 
@@ -85,7 +85,7 @@ so the fix is to **author commits as Mike**. This repo is already configured:
 
 ```bash
 git config user.name  "Mike McCormick"
-git config user.email "mccormickservices84@gmail.com"
+git config user.email "<owner-google-email>"
 ```
 
 If a deploy shows **BLOCKED** in the Vercel dashboard, this is almost always why. Re-author
@@ -146,7 +146,7 @@ put its POST URL in `.env.local` (and in Vercel's env vars), redeploy.
 ## Not yet done (owner-dependent)
 
 - **Google Business Profile** + **Google Search Console** — both need Mike's Google account
-  (`mccormickservices84@gmail.com`). Scheduled for when Mike is available.
+  (`<owner-google-email>`). Scheduled for when Mike is available.
 - **Possible brand rename** "McCormick Services" → "McCormick Pros" (to match the domain),
   pending Mike's decision. If it happens: change `BUSINESS.name` in `src/lib/business.ts`
   **and** the hard-coded "McCormick Services" text in `src/app/opengraph-image.tsx`. Decide
