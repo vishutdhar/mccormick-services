@@ -52,16 +52,17 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="max-w-2xl">
           <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-brand-olive">
-            Services in action
+            What we do
           </p>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-brand-forest sm:text-5xl">
-            The work, up close
+            From driveways to leaf piles
           </h2>
-          {/* Visible, consistent disclosure (same on all breakpoints): these
-              are sample/illustrative photos until Mike's real job photos
-              replace the placeholders in /public/work. */}
-          <p className="mt-3 text-sm italic text-brand-ink/60">
-            Sample photos for now — real job photos coming soon.
+          {/* Service-category illustrations (stock imagery in /public/work),
+              framed as the kinds of work offered — NOT a portfolio of Mike's
+              own jobs, so no "our recent work" claim is implied. */}
+          <p className="mt-4 text-lg leading-relaxed text-brand-ink/75">
+            Pressure washing, lawn care, exterior painting, and seasonal
+            cleanup across Macomb County.
           </p>
         </div>
 
