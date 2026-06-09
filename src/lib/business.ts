@@ -1,5 +1,4 @@
-export const PRIMARY_PHONE = "586-909-0027";
-export const SECONDARY_PHONE = "586-840-6888";
+export const PRIMARY_PHONE = "586-840-6888";
 
 export const BUSINESS = {
   name: "McCormick Services",

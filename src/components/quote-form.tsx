@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { SERVICES } from "@/lib/business";
+import { SERVICES, PRIMARY_PHONE, formatPhoneDisplay } from "@/lib/business";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -151,7 +151,8 @@ export function QuoteForm({ endpoint }: { endpoint: string }) {
 
       {status === "error" && (
         <p role="alert" className="text-red-700">
-          Sorry — we couldn’t send your message. Please call 586-909-0027 instead.
+          Sorry — we couldn’t send your message. Please call{" "}
+          {formatPhoneDisplay(PRIMARY_PHONE)} instead.
         </p>
       )}
     </form>

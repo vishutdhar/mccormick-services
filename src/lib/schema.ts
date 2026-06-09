@@ -1,7 +1,6 @@
 import {
   BUSINESS,
   PRIMARY_PHONE,
-  SECONDARY_PHONE,
   SERVICES,
   SERVICE_AREA_CITIES,
   formatTelHref,
@@ -45,7 +44,7 @@ export function buildLocalBusinessSchema() {
       opens: h.open,
       closes: h.close,
     })),
-    contactPoint: [PRIMARY_PHONE, SECONDARY_PHONE].map((phone) => ({
+    contactPoint: [PRIMARY_PHONE].map((phone) => ({
       "@type": "ContactPoint",
       telephone: toE164(phone),
       contactType: "customer service",

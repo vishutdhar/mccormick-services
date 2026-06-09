@@ -6,7 +6,6 @@ import {
   formatPhoneDisplay,
   groupedBusinessHours,
   PRIMARY_PHONE,
-  SECONDARY_PHONE,
   SERVICES,
   SERVICE_AREA_CITIES,
 } from "@/lib/business";
@@ -47,9 +46,8 @@ describe("business constants", () => {
     expect(formatPhoneDisplay("586-909-0027")).toBe("(586) 909-0027");
   });
 
-  it("exposes both phone numbers from the business card", () => {
-    expect(PRIMARY_PHONE).toBe("586-909-0027");
-    expect(SECONDARY_PHONE).toBe("586-840-6888");
+  it("exposes the single business phone number (the iMessage-capable line)", () => {
+    expect(PRIMARY_PHONE).toBe("586-840-6888");
   });
 
   it("includes a non-empty service area cities list", () => {

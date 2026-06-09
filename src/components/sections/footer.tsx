@@ -4,7 +4,6 @@ import {
   BUSINESS,
   SERVICES,
   PRIMARY_PHONE,
-  SECONDARY_PHONE,
   formatTelHref,
   formatPhoneDisplay,
   groupedBusinessHours,
@@ -66,7 +65,7 @@ export function Footer() {
               Get in touch
             </h2>
             <ul className="mt-4 space-y-2.5">
-              {[PRIMARY_PHONE, SECONDARY_PHONE].map((phone) => (
+              {[PRIMARY_PHONE].map((phone) => (
                 <li key={phone}>
                   <a
                     href={formatTelHref(phone)}
