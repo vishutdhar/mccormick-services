@@ -31,9 +31,9 @@ export default async function Image() {
           display: "flex",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={photoSrc}
+          alt=""
           width={1200}
           height={630}
           style={{
